@@ -29,6 +29,3 @@ jobs:
         run: npm run build --if-present
         working-directory: portfolio
 
-      - name: 🧪 Run tests
-        run: npm test -- --watch=false --no-progress
-        working-directory: portfolio

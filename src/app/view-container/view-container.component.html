@@ -1,0 +1,40 @@
+<div class="container" [class.split-mode]="isSplit">
+  <div class="left-panel" [style.width.%]="isSplit ? splitRatio : 100">
+    <ng-content select="[header]"></ng-content>
+    <div class="items-list" *ngIf="items.length">
+      <div *ngFor="let item of items" 
+           (click)="onSelect(item)"
+           [class.selected]="selectedItem?.name === item.name"
+           class="item">
+        {{item.name}}
+      </div>
+    </div>
+    <ng-content select="[left]"></ng-content>
+  </div>
+
+  <div class="right-panel" *ngIf="isSplit" [style.width.%]="100 - splitRatio">
+    <div *ngIf="selectedItem">
+            <pre class="sql-preview">
+        SELECT *
+        FROM project
+        WHERE project.id = {{selectedItem.id}};</pre>
+      
+      <div class="selected-content" *ngIf="showContent" [@contentAnimation]>
+        {{selectedItem.description}}
+      </div>
+    <div class="loading" *ngIf="!showContent && selectedItem">
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+    </div>
+    </div>
+    <div *ngIf="!selectedItem">
+        <pre class="sql-preview">
+        -- Select project to query
+        </pre>
+      <div class="no-content">
+        No project selected
+      </div>
+    <ng-content select="[right]"></ng-content>
+  </div>
+</div>

@@ -2,18 +2,49 @@ import { RouterOutlet } from '@angular/router';
 import { Component, Inject, PLATFORM_ID, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { isPlatformBrowser, NgIf } from '@angular/common';
 import { NeuralNetworkComponent } from "./neural-network/neural-network.component";
+import { ViewContainerComponent } from "./view-container/view-container.component";
+import { Project, ProjectDomain, Tools, Techniques } from './projects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, NeuralNetworkComponent, NgIf],
+    imports: [RouterOutlet, NeuralNetworkComponent, NgIf, ViewContainerComponent],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'], // Note: it's 'styleUrls' not 'styleUrl'
 })
 export class AppComponent implements AfterViewInit {
     isBrowser: boolean;
     title = 'portfolio';
+    projects:Array<Project> = [
+        new Project({
+            name:"Vision transformer for hyperspectral image extraction",
+            domainVector:[ProjectDomain.CV],
+            toolsVector:[Tools.PyTorch, Tools.Numpy, Tools['NO-SQL'], Tools.Docker, Tools.Kubernetes],
+            techniquesVector:[Techniques.Transformer],
+            difficulty:9,
+            description: "Hyperspectral content"
+        }), 
+        new Project({
+            name:"Text classification using BERT",
+            domainVector:[ProjectDomain.NLP],
+            toolsVector:[Tools.PyTorch, Tools.Numpy, Tools.Pandas],
+            techniquesVector:[Techniques.Transformer],
+            difficulty:4,
+            description: "Text classification"
+        }),
+        new Project({
+            name:"CNN for image classification",
+            domainVector:[ProjectDomain.CV],
+            toolsVector:[Tools.Tensorflow, Tools.Numpy, Tools.Pandas],
+            techniquesVector:[Techniques.CNN],
+            difficulty: 2,
+            description: "Image classification"
+        }),
+        
+    ]
 
     @ViewChild('typewriter', { static: false }) typewriterElement!: ElementRef; // Use ViewChild to reference DOM element
 

@@ -1,15 +1,20 @@
-
-
 .main {
-
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; /* Aligns items vertically */
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #101021;
+    color: #ffffff;
     
     /* Optional: background color */
+}
+
+.view-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .network-container {
@@ -23,6 +28,7 @@
     font-weight: 700;
     margin-bottom: 20px;
     font: 1.5rem 'Roboto', sans-serif;
+    color: #ffffff;
 }
 
 .typewriter p {
@@ -30,7 +36,7 @@
     font-size: 24px;
     white-space: nowrap;
     overflow: hidden; /* Hides text that overflows the width */
-    border-right: 2px solid black; /* Cursor effect */
+    border-right: 2px solid #ffffff; /* Cursor effect */
     width: 0; /* Initially set width to 0 for the effect */
     animation: typing 1.5s steps(40, end), blink 0.75s step-end infinite;
   }
@@ -43,7 +49,6 @@
   
   /* Blinking cursor effect */
   @keyframes blink {
-    from { border-right-color: black; }
+    from { border-right-color: #ffffff; }
     to { border-right-color: transparent; }
   }
-  

@@ -63,7 +63,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     typeEffect() {
-        const text = "Hello, welcome to my portolio!";
+        const text = "Hello, welcome to my portfolio!";
         let index = 0;
 
         // Make sure we start with an empty innerHTML to avoid repetition

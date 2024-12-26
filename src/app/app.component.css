@@ -52,3 +52,22 @@
     from { border-right-color: #ffffff; }
     to { border-right-color: transparent; }
   }
+
+.item {
+    padding: 12px;
+
+
+    transition: all 0.2s ease;
+    background: #282836;
+}
+
+.item-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.item-value {
+    font-size: 1rem;
+    color: #ffffff;
+}

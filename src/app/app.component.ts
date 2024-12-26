@@ -58,7 +58,7 @@ export class AppComponent implements AfterViewInit {
         }
         this.renderer.setStyle(this.typewriterElement.nativeElement, 'font-family', 'monospace, monospace');
         this.renderer.setStyle(this.typewriterElement.nativeElement, 'font-size', '2em');
-        this.renderer.setStyle(this.typewriterElement.nativeElement, 'color', '#333');
+       
     }
 
     typeEffect() {

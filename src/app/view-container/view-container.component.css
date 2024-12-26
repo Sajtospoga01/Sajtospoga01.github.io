@@ -5,106 +5,164 @@
     min-height: 300px;
     background: #101021;
     color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     margin: 0 auto;
-}
-
-.split-mode {
+    padding: 20px;
     gap: 20px;
-    background: #101021;
 }
 
 .left-panel, .right-panel {
-    background: #363636;
+    background: #1e1e2d;
     padding: 20px;
     min-height: 300px;
     overflow-y: auto;
     border-radius: 10px;
+    transition: all 0.3s ease;
 }
-
-/* .left-panel {
-     border-right: 1px solid #e0e0e0; 
-} */
 
 .items-list {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .item {
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: #282836;
 }
 
 .item:hover {
-    background: #404040;
+    background: #323242;
+    transform: translateX(5px);
 }
 
 .item.selected {
-    background: #505050;
+    background: #3c3c4e;
+    border-left: 4px solid #6366f1;
 }
 
 .sql-preview {
-    background:  #191919;
-    color: #ffffff;
-    padding: 1rem;
-    border-radius: 4px;
+    background: #151520;
+    color: #e0e0e0;
+    padding: 1.2rem;
+    border-radius: 6px;
     font-family: 'Consolas', monospace;
-    margin-bottom: 1rem;
-    border: 1px solid #505050;
+    margin-bottom: 1.2rem;
+    border: 1px solid #2a2a3c;
 }
 
 .selected-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    opacity: 0;
+    transform: scale(0.98);
+    animation: contentFadeIn 0.3s ease forwards;
 }
-
-.description-section, .table-section {
-  background: #404040;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.project-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.project-table td {
-  padding: 8px;
-  border-bottom: 1px solid #505050;
-}
-
-.project-table td:first-child {
-  font-weight: bold;
-  width: 30%;
-}
-.loading {
-    padding: 1rem;
-    color: #a0a0a0;
-    font-style: italic;
-}
-.skeleton {
-    background: linear-gradient(90deg, #363636 25%, #404040 50%, #363636 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: 4px;
-    min-height: 20px;
-    margin: 8px 0;
-}
-
-.skeleton-line {
+.selected-content, .loading {
+    min-height: 400px;
     width: 100%;
 }
 
-.skeleton-line:nth-child(2) { width: 80%; }
-.skeleton-line:nth-child(3) { width: 60%; }
+
+.description-section, .table-section {
+    background: #282836;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #ffffff;
+}
+
+.project-table td {
+    padding: 14px;
+    border-bottom: 1px solid #363644;
+}
+
+.project-table .section-header {
+    background: #323242;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1.2px;
+    color: #6366f1;
+}
+
+.project-table td:first-child {
+    font-weight: 500;
+    width: 30%;
+    color: #a0a0b0;
+}
+.skeleton {
+    background: linear-gradient(90deg, 
+        #282836 0%,
+        #323242 50%,
+        #282836 100%
+    );
+    background-size: 200% 100%;
+    animation: loading 2s infinite;
+    border-radius: 6px;
+    height: 24px;
+    margin: 8px 0;
+}
+
+.skeleton-row {
+    height: 52px; /* Match project-table td padding */
+    border-bottom: 1px solid #363644;
+}
+.skeleton-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.skeleton-header {
+    height: 40px;
+    background: #323242;
+}
+.skeleton.fade-out {
+    opacity: 0;
+    transform: scale(0.98);
+}
+.skeleton-section {
+    background: #282836;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.skeleton-cell {
+    padding: 14px;
+}
+.skeleton-cell:first-child {
+    width: 30%;
+}
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.skeleton-line {
+    opacity: 0.7;
+}
+
+.skeleton-line:nth-child(2) { width: 85%; opacity: 0.5; }
+.skeleton-line:nth-child(3) { width: 70%; opacity: 0.3; }
 
 @keyframes loading {
     0% { background-position: 200% 0; }

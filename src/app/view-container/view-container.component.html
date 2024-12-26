@@ -26,22 +26,18 @@
             </div>
             
             <div class="table-section">
-                <h3>Project Details</h3>
+                <h3>Project properties</h3>
                 <table class="project-table">
                     <tr>
                         <td>Name:</td>
                         <td>{{selectedItem.name}}</td>
                     </tr>
-                    <tr class="section-header">
-                        <td colspan="2">Domain</td>
-                    </tr>
+  
                     <tr>
                         <td>Areas:</td>
                         <td>{{mapArrayToEnumNames(selectedItem.domainVector, ProjectDomain).join(', ')}}</td>
                     </tr>
-                    <tr class="section-header">
-                        <td colspan="2">Technical Stack</td>
-                    </tr>
+         
                     <tr>
                         <td>Tools:</td>
                         <td>{{mapArrayToEnumNames(selectedItem.toolsVector, Tools).join(', ')}}</td>

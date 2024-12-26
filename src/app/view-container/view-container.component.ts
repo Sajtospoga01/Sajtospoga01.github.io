@@ -31,7 +31,7 @@ export class ViewContainerComponent {
       this.selectedItem = item;
       this.showContent = false;
       console.log(item);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 500));
       this.showContent = true;
     }
 }

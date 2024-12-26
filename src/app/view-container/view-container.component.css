@@ -60,8 +60,30 @@
 }
 
 .selected-content {
-    padding: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.description-section, .table-section {
+  background: #404040;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.project-table td {
+  padding: 8px;
+  border-bottom: 1px solid #505050;
+}
+
+.project-table td:first-child {
+  font-weight: bold;
+  width: 30%;
 }
 .loading {
     padding: 1rem;

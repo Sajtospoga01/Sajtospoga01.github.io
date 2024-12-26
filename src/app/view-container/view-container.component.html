@@ -19,9 +19,44 @@
         FROM project
         WHERE project.id = {{selectedItem.id}};</pre>
       
-      <div class="selected-content" *ngIf="showContent" [@contentAnimation]>
-        {{selectedItem.description}}
-      </div>
+        <div class="selected-content" *ngIf="showContent" [@contentAnimation]>
+            <div class="description-section">
+              <h3>Description</h3>
+              <p>{{selectedItem.description}}</p>
+            </div>
+            
+            <div class="table-section">
+                <h3>Project Details</h3>
+                <table class="project-table">
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{selectedItem.name}}</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td colspan="2">Domain</td>
+                    </tr>
+                    <tr>
+                        <td>Areas:</td>
+                        <td>{{mapArrayToEnumNames(selectedItem.domainVector, ProjectDomain).join(', ')}}</td>
+                    </tr>
+                    <tr class="section-header">
+                        <td colspan="2">Technical Stack</td>
+                    </tr>
+                    <tr>
+                        <td>Tools:</td>
+                        <td>{{mapArrayToEnumNames(selectedItem.toolsVector, Tools).join(', ')}}</td>
+                    </tr>
+                    <tr>
+                        <td>Techniques:</td>
+                        <td>{{mapArrayToEnumNames(selectedItem.techniquesVector, Techniques).join(', ')}}</td>
+                    </tr>
+                    <tr>
+                        <td>Difficulty:</td>
+                        <td>{{selectedItem.difficulty}}/10</td>
+                    </tr>
+                </table>
+            </div>
+          </div>
     <div class="loading" *ngIf="!showContent && selectedItem">
         <div class="skeleton skeleton-line"></div>
         <div class="skeleton skeleton-line"></div>

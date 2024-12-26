@@ -23,10 +23,18 @@ export class ViewContainerComponent {
     @Input() isSplit: boolean = false;
     @Input() splitRatio: number = 30;
     @Input() items: Project[] = [];
-    
+    ProjectDomain = ProjectDomain;
+    Tools = Tools;
+    Techniques = Techniques;
     selectedItem: Project | null = null;
     showContent: boolean = false;
-  
+    getEnumName(enumObj: any, index: number): string {
+        return enumObj[index];
+    }
+
+    mapArrayToEnumNames(indices: number[], enumObj: any): string[] {
+        return indices.map(index => this.getEnumName(enumObj, index));
+    }
     async onSelect(item: Project) {
       this.selectedItem = item;
       this.showContent = false;

@@ -1,0 +1,14 @@
+<div class="container" [class.split-mode]="isSplit">
+  <div class="left-panel" [style.width.%]="isSplit ? splitRatio : 100">
+    <ng-content select="[header]"></ng-content>
+    <div class="items-list">
+      <ng-content select="[items]"></ng-content>
+    </div>
+    <ng-content select="[left]"></ng-content>
+  </div>
+
+  <div class="right-panel" *ngIf="isSplit" [style.width.%]="100 - splitRatio">
+    <ng-content select="[content]"></ng-content>
+    <ng-content select="[right]"></ng-content>
+  </div>
+</div>

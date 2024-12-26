@@ -58,7 +58,7 @@
 
 
     transition: all 0.2s ease;
-    background: #282836;
+ 
 }
 
 .item-name {
@@ -70,4 +70,21 @@
 .item-value {
     font-size: 1rem;
     color: #ffffff;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
 }

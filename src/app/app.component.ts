@@ -5,13 +5,14 @@ import { NeuralNetworkComponent } from "./neural-network/neural-network.componen
 import { ViewContainerComponent } from "./view-container/view-container.component";
 import { Project, ProjectDomain, Tools, Techniques } from './projects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StaticViewContainerComponent } from "./static-view-container/static-view-container.component";
 
 
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, NeuralNetworkComponent, NgIf, ViewContainerComponent],
+    imports: [RouterOutlet, NeuralNetworkComponent, NgIf, ViewContainerComponent, StaticViewContainerComponent],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'], // Note: it's 'styleUrls' not 'styleUrl'
 })

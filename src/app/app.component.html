@@ -6,14 +6,14 @@
     </h1>
     <div>
         <H1> Andras Bodrogai</H1>
-
-        <app-view-container>    
-            # personal info head
+        <app-static-view-container [isSplit]="true" [splitRatio]="80">
             <div header>
                 <h2>Personal Info</h2>
             </div>
-            # personal info list
-            <div left>
+            <div items>
+                <img src="assets/images/portrait.jpeg" alt="Andras Bodrogai" class="profile-image">
+            </div>
+            <div content>
                 <div class="items-list
                 ">
                     <div class="item">
@@ -55,8 +55,8 @@
                     </div>
                 </div>
             </div>
+        </app-static-view-container>
 
-        </app-view-container>
 
         <app-view-container [isSplit]="true" [splitRatio]="30" [items]="projects">
             <div header>

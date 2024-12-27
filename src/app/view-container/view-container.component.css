@@ -12,6 +12,10 @@
     gap: 20px;
 }
 
+.highlight {
+    color: #6366f1;
+}
+
 .left-panel, .right-panel {
     background: #1e1e2d;
     padding: 20px;
@@ -56,6 +60,20 @@
     border: 1px solid #2a2a3c;
 }
 
+.sql-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.sql-label {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 0.8em;
+  color: #666;
+  z-index: 1;
+}
+
 .selected-content {
     display: flex;
     flex-direction: column;
@@ -75,6 +93,46 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.description-section {
+    line-height: 1.6;
+}
+
+.description-section strong {
+    color: #6366f1;
+    font-weight: 700;
+    font-size: 1.05em;
+}
+
+.description-section a {
+    color: #818cf8;
+    text-decoration: none;
+    border-bottom: 1px dotted #818cf8;
+}
+
+.description-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.description-section li {
+    margin-bottom: 5px;
+}
+
+.description-section code {
+    background: #1e1e2d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+}
+
+.description-section em {
+    font-style: italic;
+    color: #a5b4fc;
 }
 
 .project-table {
@@ -167,4 +225,26 @@
 @keyframes loading {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
+}
+
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.details-button {
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.details-button:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
 }

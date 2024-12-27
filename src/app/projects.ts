@@ -2,6 +2,8 @@ export enum ProjectDomain {
     "NLP",
     "CV",
     "Data Engineering",
+    "Architecture",
+    "Frontend",
 }
 
 export enum Tools {
@@ -12,6 +14,9 @@ export enum Tools {
     "OpenCV",
     "Numpy",
     "Pandas",
+    "Dask",
+    "FastAPI",
+    "NextJS",
     "Matplotlib",
     "Seaborn",
     "Scikit-learn",
@@ -25,6 +30,8 @@ export enum Techniques{
     "CNN",
     "RNN",
     "Transformer",
+    "Database Optimization",
+    "Frontend",
 }
 interface ProjectParams {
     name: string;

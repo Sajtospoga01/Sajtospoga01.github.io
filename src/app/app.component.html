@@ -1,24 +1,27 @@
-
 <main class="main">
-    <h1 #typewriter class="typewriter">
-
-        Hello, welcome to my portfolio!
-    </h1>
-    <div>
+    <div class="header" [style.opacity]="headerOpacity" 
+         [style.--scale]="headerScale"
+         [style.--y-pos.px]="headerPosition"
+         [class.fixed]="contentVisible">
+        <img src="assets/images/portrait.jpeg" alt="Andras Bodrogai" class="profile-image">
         <H1> Andras Bodrogai</H1>
+        Software Engineer/Data Scientist 
+    </div>   
+    <div class="content-container">
         <app-static-view-container [isSplit]="true" [splitRatio]="80">
             <div header>
                 <h2>Personal Info</h2>
             </div>
             <div items>
                 <div class="profile">
-                    <img src="assets/images/portrait.jpeg" alt="Andras Bodrogai" class="profile-image">
+                    
                     <div class="profile-info">
                         <h3 class="paragraph-title">Bio</h3>
 
                         <div>
                             I am Andras, a <strong class="highlight">data scientist</strong> by day, massive geek by night tinkering on a vast variatey of projects. 
-                            I finished my studies at the <strong class="highlight">University of Glasgow in BSc in Computing Science</strong>, specialising in Data Engineering and deep learning, with over <strong class="highlight">2 years</strong> of professional experience.
+                            I finished my studies at the <strong class="highlight">University of Glasgow in BSc in Computing Science</strong>, specialising in Data Engineering and deep learning, with over 
+                            <br> <strong class="highlight">2 years</strong> of professional experience.
 
                         </div>            
                         
@@ -52,6 +55,7 @@
             <div content>
                 <div class="items-list
                 ">
+                    <h2>Contact me</h2>
                     <div class="item">
                         <div class="item-name">Name:</div>
                         <div class="item-value
@@ -103,7 +107,6 @@
 
           </app-view-container>
     </div>
-
 </main>
 
 

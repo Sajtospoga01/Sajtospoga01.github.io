@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project, ProjectDomain, Tools, Techniques } from '../projects';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-view-container',
@@ -9,8 +10,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   imports: [CommonModule],
   templateUrl: './view-container.component.html',
   styleUrl: './view-container.component.css',
+  encapsulation: ViewEncapsulation.None,
   animations: [
-    
     trigger('contentAnimation', [
       transition(':enter', [
         style({ opacity: 0 }),
@@ -28,6 +29,8 @@ export class ViewContainerComponent {
     Techniques = Techniques;
     selectedItem: Project | null = null;
     showContent: boolean = false;
+    constructor(private sanitizer: DomSanitizer) {}
+
     getEnumName(enumObj: any, index: number): string {
         return enumObj[index];
     }
@@ -35,6 +38,11 @@ export class ViewContainerComponent {
     mapArrayToEnumNames(indices: number[], enumObj: any): string[] {
         return indices.map(index => this.getEnumName(enumObj, index));
     }
+
+    getSafeHtml(html: string): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(html);
+    }
+
     async onSelect(item: Project) {
       this.selectedItem = item;
       this.showContent = false;

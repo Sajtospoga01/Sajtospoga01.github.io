@@ -14,15 +14,18 @@
 
   <div class="right-panel" *ngIf="isSplit" [style.width.%]="100 - splitRatio">
     <div *ngIf="selectedItem">
-            <pre class="sql-preview">
+            <div class="sql-container">
+                <span class="sql-label">sql</span>
+                <pre class="sql-preview">
         SELECT *
         FROM project
         WHERE project.id = {{selectedItem.id}};</pre>
+            </div>
       
         <div class="selected-content" *ngIf="showContent" [@contentAnimation]>
             <div class="description-section">
               <h3>Description</h3>
-              <p>{{selectedItem.description}}</p>
+              <div [innerHTML]="getSafeHtml(selectedItem.description)"></div>
             </div>
             
             <div class="table-section">
@@ -60,9 +63,12 @@
     </div>
     </div>
     <div *ngIf="!selectedItem">
-        <pre class="sql-preview">
+            <div class="sql-container">
+                <span class="sql-label">sql</span>
+                <pre class="sql-preview">
         -- Select project to query
         </pre>
+            </div>
       <div class="no-content">
         No project selected
       </div>

@@ -8,7 +8,11 @@ export enum ProjectDomain {
 
 export enum Tools {
     "Python",
+    "C++",
+    "Kotlin",
     "Tensorflow",
+    "Tensorflow Lite/LiteRT",
+    
     "PyTorch",
     "Keras",
     "OpenCV",
@@ -32,7 +36,23 @@ export enum Techniques{
     "Transformer",
     "Database Optimization",
     "Frontend",
+    "Agentic Systems",
 }
+
+export interface DisplayableItem {
+    name: string;
+    description: string;
+    id: number;
+    domainVector?: Array<number>;
+    toolsVector?: Array<number>;
+    techniquesVector?: Array<number>;
+    difficulty?: number;
+    // Add Experience-specific optional properties
+    company?: string;
+    role?: string;
+    duration?: string;
+}
+
 interface ProjectParams {
     name: string;
     domainVector: Array<ProjectDomain>;
@@ -42,6 +62,16 @@ interface ProjectParams {
     description?: string;  // optional parameter
 }
 
+interface ExperienceParams {
+    name: string;
+    company: string;
+    role: string;
+    duration: string;
+    domainVector?: Array<ProjectDomain>;
+    toolsVector?: Array<Tools>;
+    techniquesVector?: Array<Techniques>;
+    description?: string;
+}
 
 export class Project {
     "name": string;
@@ -81,5 +111,30 @@ export class Project {
         }
         console.log(vector);
         return vector;
+    }
+}
+
+export class Experience implements DisplayableItem {
+    name: string;
+    company: string;
+    role: string;
+    duration: string;
+    domainVector?: Array<number>;
+    toolsVector?: Array<number>;
+    techniquesVector?: Array<number>;
+    description: string = "";
+    id: number = 0;
+    static id: number = 0;
+
+    constructor(params: ExperienceParams) {
+        this.name = params.name;
+        this.company = params.company;
+        this.role = params.role;
+        this.duration = params.duration;
+        this.domainVector = params.domainVector;
+        this.toolsVector = params.toolsVector;
+        this.techniquesVector = params.techniquesVector;
+        this.description = params.description || "";
+        this.id = Experience.id++;
     }
 }

@@ -4,7 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { isPlatformBrowser, NgIf } from '@angular/common';
 import { NeuralNetworkComponent } from "./neural-network/neural-network.component";
 import { ViewContainerComponent } from "./view-container/view-container.component";
-import { Project, ProjectDomain, Tools, Techniques } from './projects';
+import { Project, ProjectDomain, Tools, Techniques, Experience } from './projects';
 import { StaticViewContainerComponent } from "./static-view-container/static-view-container.component";
 import { fromEvent } from 'rxjs';
 
@@ -66,6 +66,28 @@ export class AppComponent implements OnInit {
 
 
     ]
+    experience: Array<Experience> = [
+        new Experience({
+            name: "Software Engineer",
+            company: "Siemens DI SW",
+            role: "Software Engineer",
+            duration: "Jul 2024 - Present",
+            domainVector: [ProjectDomain.NLP, ProjectDomain.Architecture],
+            toolsVector: [Tools['C++'], Tools.Python, Tools.Pandas, Tools.FastAPI, Tools.Docker],
+            techniquesVector: [Techniques['Agentic Systems']],
+            description: "Working on large-scale industrial software solutions, focusing on integrating Agentic Workflows into applications."
+        }), 
+        new Experience({
+            name: "Research Software Engineer",
+            company: "University of Glasgow",
+            role: "Research Assistant",
+            duration: "Oct 2023 - Aug 2022",
+            domainVector: [ProjectDomain.CV],
+            toolsVector: [Tools['Tensorflow Lite/LiteRT'], Tools.Kotlin, Tools.OpenCV],
+            techniquesVector: [Techniques.CNN],
+            description: "Developed computer vision solutions for mobile platforms, focusing on real-time image processing, for Cybersecurity applications."
+        }),
+    ];
 
     constructor(@Inject(PLATFORM_ID) private platformId: Object, private renderer: Renderer2) {
         this.isBrowser = isPlatformBrowser(this.platformId);
@@ -78,9 +100,9 @@ export class AppComponent implements OnInit {
                 const percent = scrollPosition / window.innerHeight;
                 
                 // Smoother transitions for both scroll up and down
-                this.headerOpacity = Math.max(0.3, 1 - percent);
+                this.headerOpacity = Math.max(0.5, 1 - percent);
                 this.headerScale = Math.max(0.5, 1 - percent);
-                this.headerPosition = -scrollPosition / (1- percent * 0.5);
+                this.headerPosition = -scrollPosition / (1- percent * 0.1);
                 this.contentVisible = scrollPosition > 0;
             });
         }

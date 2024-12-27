@@ -1,6 +1,6 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Project, ProjectDomain, Tools, Techniques } from '../projects';
+import { Project, ProjectDomain, Tools, Techniques, DisplayableItem, Experience } from '../projects';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
@@ -23,11 +23,11 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class ViewContainerComponent {
     @Input() isSplit: boolean = false;
     @Input() splitRatio: number = 30;
-    @Input() items: Project[] = [];
+    @Input() items: DisplayableItem[] = [];
     ProjectDomain = ProjectDomain;
     Tools = Tools;
     Techniques = Techniques;
-    selectedItem: Project | null = null;
+    selectedItem: DisplayableItem | null = null;
     showContent: boolean = false;
     constructor(private sanitizer: DomSanitizer) {}
 
@@ -35,19 +35,27 @@ export class ViewContainerComponent {
         return enumObj[index];
     }
 
-    mapArrayToEnumNames(indices: number[], enumObj: any): string[] {
-        return indices.map(index => this.getEnumName(enumObj, index));
+    mapArrayToEnumNames(indices: number[] | undefined, enumObj: any): string[] {
+        return indices ? indices.map(index => this.getEnumName(enumObj, index)) : [];
     }
 
     getSafeHtml(html: string): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(html);
     }
 
-    async onSelect(item: Project) {
+    async onSelect(item: DisplayableItem) {
       this.selectedItem = item;
       this.showContent = false;
       console.log(item);
       await new Promise(resolve => setTimeout(resolve, 500));
       this.showContent = true;
+    }
+
+    isExperience(item: DisplayableItem): item is Experience {
+        return item instanceof Experience;
+    }
+
+    isProject(item: DisplayableItem): item is Project {
+        return item instanceof Project;
     }
 }

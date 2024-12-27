@@ -17,9 +17,9 @@
             <div class="sql-container">
                 <span class="sql-label">sql</span>
                 <pre class="sql-preview">
-        SELECT *
-        FROM project
-        WHERE project.id = {{selectedItem.id}};</pre>
+                SELECT *
+                FROM {{isExperience(selectedItem) ? 'experience' : 'project'}}
+                WHERE {{isExperience(selectedItem) ? 'experience' : 'project'}}.id = {{selectedItem.id}};</pre>
             </div>
       
         <div class="selected-content" *ngIf="showContent" [@contentAnimation]>
@@ -35,23 +35,33 @@
                         <td>Name:</td>
                         <td>{{selectedItem.name}}</td>
                     </tr>
+
+                    <tr *ngIf="isExperience(selectedItem)">
+                        <td>Company:</td>
+                        <td>{{$any(selectedItem).company}}</td>
+                    </tr>
+
+                    <tr *ngIf="isExperience(selectedItem)">
+                        <td>Duration:</td>
+                        <td>{{$any(selectedItem).duration}}</td>
+                    </tr>
   
-                    <tr>
+                    <tr *ngIf="selectedItem.domainVector">
                         <td>Areas:</td>
                         <td>{{mapArrayToEnumNames(selectedItem.domainVector, ProjectDomain).join(', ')}}</td>
                     </tr>
          
-                    <tr>
+                    <tr *ngIf="selectedItem.toolsVector">
                         <td>Tools:</td>
                         <td>{{mapArrayToEnumNames(selectedItem.toolsVector, Tools).join(', ')}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="selectedItem.techniquesVector">
                         <td>Techniques:</td>
                         <td>{{mapArrayToEnumNames(selectedItem.techniquesVector, Techniques).join(', ')}}</td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="isProject(selectedItem)">
                         <td>Difficulty:</td>
-                        <td>{{selectedItem.difficulty}}/10</td>
+                        <td>{{$any(selectedItem).difficulty}}/10</td>
                     </tr>
                 </table>
             </div>
@@ -64,7 +74,7 @@
     </div>
     <div *ngIf="!selectedItem">
             <div class="sql-container">
-                <span class="sql-label">sql</span>
+                <span class="sql-label">SQL</span>
                 <pre class="sql-preview">
         -- Select project to query
         </pre>

@@ -3,10 +3,13 @@
          [style.--scale]="headerScale"
          [style.--y-pos.px]="headerPosition"
          [class.fixed]="contentVisible">
-        <img src="assets/images/portrait.jpeg" alt="Andras Bodrogai" class="profile-image">
+        
         <H1> Andras Bodrogai</H1>
-        Software Engineer/Data Scientist 
+        Data Scientist 
     </div>   
+
+
+
     <div class="content-container">
         <app-static-view-container [isSplit]="true" [splitRatio]="80">
             <div header>
@@ -14,7 +17,7 @@
             </div>
             <div items>
                 <div class="profile">
-                    
+                    <img src="assets/images/portrait.jpeg" alt="Andras Bodrogai" class="profile-image">
                     <div class="profile-info">
                         <h3 class="paragraph-title">Bio</h3>
 
@@ -98,7 +101,12 @@
                 </div>
             </div>
         </app-static-view-container>
+        <app-view-container [isSplit]="true" [splitRatio]="30" [items]="experience">
+            <div header>
+              <h2>Work experience</h2>
+            </div>
 
+          </app-view-container>
 
         <app-view-container [isSplit]="true" [splitRatio]="30" [items]="projects">
             <div header>
